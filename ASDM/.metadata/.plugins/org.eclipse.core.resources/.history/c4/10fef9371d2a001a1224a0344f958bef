@@ -1,0 +1,16 @@
+package com.orangehrmlive;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class GoogleSite {
+	
+	ChromeDriver chrome;
+	@Test(priorty=1)
+	public void openbrowser
+	{
+		
+		
+	}
+	
+
+}

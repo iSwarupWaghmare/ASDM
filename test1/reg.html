@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<script>
+
+
+function finals()
+{
+
+    if(!check_username() || !check_email()||!check_number()||!check_occ()||!check_std()||!check_div()||!validatecap())
+    {
+        alert("Enter correct details");
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+
+}
+
+
+
+
+
+function check_username()
+{
+	errmsg="";
+	var a = document.getElementById("name").value;
+	
+	if(a == "" || a.length<5)
+	{
+		errmsg="Entered Value is less than 5 or Empty cell";
+		document.getElementById("sname").innerHTML = errmsg;
+        document.getElementById("sname").style.color="Red"
+		return false;
+	}
+	else
+	{
+		errmsg="";
+		document.getElementById("sname").innerHTML = errmsg;
+	return true;
+	}
+
+}
+
+
+
+
+function check_email()
+{
+	errmsg="";
+	var a = document.getElementById("email").value;
+
+    var pat= /^([a-z 0-9\.-]+)@([a-z0-9-]+).([a-z]{2,8})(.[a-z]{2,8})?$/;
+	
+	if(pat.test(a))
+	{
+        errmsg="";
+		document.getElementById("semail").innerHTML = errmsg;
+	return true;
+    }
+	else
+	{
+		errmsg="Incorrect Email ID";
+		document.getElementById("semail").innerHTML = errmsg;
+        document.getElementById("semail").style.color="Red"
+		return false;    
+	}
+
+}
+
+
+
+
+function check_number()
+{
+	errmsg="";
+	var a = document.getElementById("number").value;
+
+    var pat= /^[7-9][0-9]{9}$/;
+	
+	if(pat.test(a))
+	{
+        errmsg="";
+		document.getElementById("snumber").innerHTML = errmsg;
+	return true;
+    }
+	else
+	{
+		errmsg="Incorrect Number";
+		document.getElementById("snumber").innerHTML = errmsg;
+        document.getElementById("snumber").style.color="Red"
+		return false;    
+	}
+
+}
+
+
+function check_occ()
+{
+	errmsg="";
+	var a = document.getElementById("occupation").value;
+	
+	if(a == "" || a.length<5)
+	{
+		errmsg="Entered Value is less than 5 or Empty cell";
+		document.getElementById("socc").innerHTML = errmsg;
+        document.getElementById("socc").style.color="Red"
+		return false;
+	}
+	else
+	{
+		errmsg="";
+		document.getElementById("socc").innerHTML = errmsg;
+	return true;
+	}
+
+}
+
+
+
+
+function check_std()
+{
+	errmsg="";
+	var a = document.getElementById("std").value;
+	
+	if(a == "Please select")
+	{
+		errmsg="Please select";
+		document.getElementById("sstd").innerHTML = errmsg;
+        document.getElementById("sstd").style.color="Red"
+		return false;
+	}
+	else
+	{
+		errmsg="";
+		document.getElementById("sstd").innerHTML = errmsg;
+	    return true;
+	}
+
+}
+
+
+
+function check_div()
+{
+	errmsg="";
+	var a = document.getElementById("divi").value;
+	
+	if(a == "Please select")
+	{
+		errmsg="Please select";
+		document.getElementById("sdiv").innerHTML = errmsg;
+        document.getElementById("sdiv").style.color="Red"
+		return false;
+	}
+	else
+	{
+		errmsg="";
+		document.getElementById("sdiv").innerHTML = errmsg;
+	return true;
+	}
+
+}
+function validatecap(){
+            errmsg="";
+            
+            var string1 = removeSpaces(document.getElementById('gncap').value);
+            var string2 = removeSpaces(document.getElementById('maincap').value);
+            if (string1 != string2 || string2 == ""){
+                Captcha();
+                errmsg="Please Enter correct";
+                document.getElementById('scap').innerHTML += errmsg;
+                document.getElementById("scap").style.color="Red"
+                return false;
+            }
+            else{
+                errmsg="";
+		document.getElementById("scap").innerHTML = errmsg;
+        return true;
+            }
+        }
+
+function Captcha(){
+            var alpha = new Array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','1','2','3','4','5','6','7','8','9','0');
+            var i;
+            for (i=0;i<6;i++){
+                var a = alpha[Math.floor(Math.random() * alpha.length)];
+                var b = alpha[Math.floor(Math.random() * alpha.length)];
+                var c = alpha[Math.floor(Math.random() * alpha.length)];
+                var d = alpha[Math.floor(Math.random() * alpha.length)];
+                
+            }
+            var code = a + ' ' + b + ' ' + ' ' + c + ' ' + d;
+            document.getElementById("gncap").value = code
+            
+            
+        }
+
+
+        function removeSpaces(string){
+            return string.split(' ').join('');
+        }
+</script>
+
+
+</head>
+<body class="container" onload="Captcha()" >
+
+<form onsubmit="return finals()" method="post" action="abc.html">
+
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" required onblur="check_username()"><span id="sname"></span>
+      </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required onblur="check_email()">
+          <span id="semail"></span>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="number">Number</label>
+          <input type="number" class="form-control" id="number" name="number" placeholder="Enter number" required onblur="check_number()">
+          <span id="snumber"></span>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="occupation">Occupation</label>
+          <input type="text" class="form-control" id="occupation" name="occupation" placeholder="Enter occupation" required onblur="check_occ()">
+          <span id="socc"></span>
+        </div>
+        
+      </div>
+
+      
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="std">Child STD</label>
+            <select id="std" name="std" class="form-control" required onblur="check_std()">
+              <option selected value="Please select">Please select</option>
+              <option>10th</option>
+              <option>11th</option>
+              <option>12th</option>
+            </select>
+            <span id="sstd"></span>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="divi">DIV in</label>
+            <select id="divi" name="divi" class="form-control" required onblur="check_div()">
+                <option selected value="Please select">Please select</option>
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+              </select>
+              <span id="sdiv"></span>
+        </div>
+
+      </div>
+
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="maincap">Enter Captcha</label>
+          <input type="text" class="form-control" id="maincap" name="maincap" placeholder="Enter Captcha" required onblur="validatecap()">
+          <span id="scap"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <br>
+          <input type="button" class="form-control btn btn-dark" id="gncap" name="gncap" value="" disabled>
+        </div>
+      </div>
+
+
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <input type="submit" class="form-control btn btn-dark" value="Submit">
+        </div>
+        <div class="form-group col-md-6">
+          
+          <input type="reset" class="form-control btn btn-dark" value="Reset" onclick="Captcha()">
+        </div>
+      </div>
+
+
+</form>
+
+    
+</body>
+</html>
